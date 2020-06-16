@@ -2,30 +2,35 @@
 let num = 22;
 let count = 10;
 let question = function(){
-    if (count <= 0) {
-        
-    }
-
-    let a = prompt("Угадай число от 1 до 100");
+    if (count > 0) {
+        let a = prompt("Угадай число от 1 до 100");
     if (a === null){
         alert("Как хочешь((...");
     } else if (a / a !== 1) {
-        alert("Че, блин?");
+        count--;
+        alert("Введите число! Осталось попыток " + count);
         question();
     } else if (a > num) {
         count--;
         alert("Загаданное число меньше, осталось попыток " + count);
-        
         question();
     } else if (a < num){
         count--;
         alert("Загаданное число больше, осталось попыток " + count);
         question();
     } else if (a == num){
-        alert("Верно!");
-        
+        let b = confirm("Поздравляю, Вы угадали!!! Хотели бы сыграть еще?");
+        if (b) {
+            count = 10;
+            question();
+        } else {
+            alert("Спасибо за игру!");
+        }
     } 
     console.log(a);
+    } else { 
+        alert("Количество попыток израсходовано((");
+    }
 };
 question();
 
